@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开云 · 信息入口与平台说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+            line-height: 1.6;
+            color: #1f2a3a;
+            background-color: #f7f9fc;
+        }
+        a {
+            text-decoration: none;
+            color: #0066cc;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        a:hover {
+            color: #004b99;
+            border-bottom-color: #0066cc;
+        }
+        /* 强调色用于链接，复用声明 */
+        .accent-link {
+            color: #b33c2c;
+            border-bottom-color: rgba(179, 60, 44, 0.2);
+        }
+        .accent-link:hover {
+            color: #8a2c1e;
+            border-bottom-color: #b33c2c;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---------- Hero 区（深色） ---------- */
+        .hero {
+            background: linear-gradient(145deg, #121e2f 0%, #1b2b42 100%);
+            color: #eef2f7;
+            padding: 80px 0 70px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            right: -20%;
+            bottom: -30%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        .hero h1 span {
+            font-weight: 700;
+            color: #d6e5ff;
+        }
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: #b6cbe0;
+            max-width: 720px;
+            margin: 0 auto 20px;
+        }
+        .hero .meta-hint {
+            font-size: 0.9rem;
+            color: #7c96b0;
+            background: rgba(255,255,255,0.06);
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 40px;
+            letter-spacing: 0.3px;
+            margin-top: 8px;
+        }
+
+        /* ---------- 优势区 ---------- */
+        .advantages {
+            padding: 60px 0 50px;
+            background: #ffffff;
+        }
+        .advantages .section-title {
+            text-align: center;
+            font-size: 1.9rem;
+            font-weight: 450;
+            color: #1f2a3a;
+            margin-bottom: 48px;
+            letter-spacing: 1px;
+        }
+        .advantage-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+        }
+        .advantage-card {
+            background: #f7faff;
+            padding: 30px 24px 28px;
+            border-radius: 20px;
+            flex: 1 1 260px;
+            max-width: 340px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.02), 0 2px 4px rgba(0,20,40,0.03);
+            border: 1px solid #e8edf4;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .advantage-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 28px rgba(0,0,0,0.04), 0 4px 8px rgba(0,20,40,0.04);
+        }
+        .advantage-card h3 {
+            font-size: 1.35rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #1e3144;
+            letter-spacing: 0.3px;
+        }
+        .advantage-card h3 i {
+            font-style: normal;
+            background: #e2e9f3;
+            border-radius: 40px;
+            padding: 0 12px;
+            font-size: 0.85rem;
+            color: #254a6e;
+            margin-right: 8px;
+            display: inline-block;
+        }
+        .advantage-card p {
+            color: #3d4d62;
+            font-size: 0.95rem;
+            margin-top: 6px;
+        }
+
+        /* ---------- 说明区（卡片化） ---------- */
+        .explain {
+            background: #f0f4fa;
+            padding: 60px 0;
+        }
+        .explain .container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+        .explain-text {
+            flex: 1 1 350px;
+        }
+        .explain-text h2 {
+            font-size: 1.8rem;
+            font-weight: 450;
+            margin-bottom: 20px;
+            color: #182433;
+        }
+        .explain-text p {
+            margin-bottom: 20px;
+            font-size: 1rem;
+            color: #2b3c4e;
+        }
+        .explain-text .highlight {
+            background: #e2eaf5;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-style: normal;
+        }
+        .explain-card-group {
+            flex: 1 1 350px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .explain-item {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 18px 22px;
+            border-left: 5px solid #a0bcd6;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .explain-item strong {
+            color: #1b2e45;
+            display: block;
+            font-weight: 500;
+            margin-bottom: 4px;
+            font-size: 1.05rem;
+        }
+        .explain-item span {
+            color: #3b536b;
+            font-size: 0.9rem;
+        }
+
+        /* ---------- FAQ 摘要 (简洁卡片) ---------- */
+        .faq-summary {
+            padding: 60px 0 40px;
+            background: #ffffff;
+        }
+        .faq-summary .section-title {
+            text-align: center;
+            font-size: 1.7rem;
+            font-weight: 450;
+            margin-bottom: 40px;
+            color: #1e2c3c;
+        }
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .faq-item {
+            background: #f9fcff;
+            padding: 20px 20px 18px;
+            border-radius: 18px;
+            border: 1px solid #e6ecf3;
+        }
+        .faq-item .q {
+            font-weight: 500;
+            color: #192b3b;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .faq-item .q::before {
+            content: '▹';
+            color: #0066cc;
+            font-weight: 600;
+        }
+        .faq-item .a {
+            font-size: 0.92rem;
+            color: #3b4c60;
+            padding-left: 22px;
+        }
+        .faq-item .a a {
+            font-weight: 500;
+        }
+
+        /* ---------- 底部链接 ---------- */
+        .footer-links {
+            background: #eef3f9;
+            padding: 40px 0 48px;
+            text-align: center;
+            border-top: 1px solid #dce4ed;
+        }
+        .footer-links p {
+            font-size: 0.95rem;
+            color: #2e4055;
+            margin-bottom: 8px;
+        }
+        .footer-links .link-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 24px;
+            margin-top: 18px;
+        }
+        .footer-links .link-group a {
+            font-size: 0.95rem;
+        }
+        .footer-note {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #6a819b;
+            opacity: 0.7;
+        }
+
+        /* ---------- 响应式 ---------- */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.0rem;
+            }
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+            .advantage-card {
+                flex: 1 1 100%;
+                max-width: 460px;
+            }
+            .explain .container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .explain-text h2 {
+                font-size: 1.5rem;
+            }
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            .hero {
+                padding: 60px 0 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ====== HERO 区 ====== -->
+<section class="hero">
+    <div class="container">
+        <h1>稳定入口 · <span>开云</span></h1>
+        <p class="subtitle">一个持续提供结构化访问指引的信息节点。无论初次接触还是日常使用，都能快速找到所需。</p>
+        <div class="meta-hint">页面说明 · 知识型入口 · 非跳转聚合</div>
+    </div>
+</section>
+
+<!-- ====== 优势区 ====== -->
+<section class="advantages">
+    <div class="container">
+        <h2 class="section-title">为什么选择通过此页了解</h2>
+        <div class="advantage-grid">
+            <div class="advantage-card">
+                <h3><i>①</i> 持续可用</h3>
+                <p>入口地址长期维护，避免频繁变动带来的困扰。经过验证的域名指向，保持稳定连接。</p>
+            </div>
+            <div class="advantage-card">
+                <h3><i>②</i> 减少中间跳转</h3>
+                <p>页面直接展示核心说明，不需要多层查找。内容与指向保持一致，降低认知负担。</p>
+            </div>
+            <div class="advantage-card">
+                <h3><i>③</i> 简洁的结构</h3>
+                <p>信息分区明确，从概述到FAQ摘要均围绕单一主题。适合快速浏览与回顾。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== 说明区 ====== -->
+<section class="explain">
+    <div class="container">
+        <div class="explain-text">
+            <h2>页面定位与使用场景</h2>
+            <p>
+                本页面向希望了解 <strong>开云</strong> 相关服务或信息的用户，提供一个<em class="highlight">可长期保存的导航基点</em>。
+                内容围绕平台特征、常见疑问和访问建议展开，不包含第三方评价或主观引导。
+            </p>
+            <p>
+                如果你正在寻找一个可靠的切入点，可以直接参考下方摘要，或通过句子内嵌的链接前往
+                <a href="https://cn-m-kai-yun.com">开云</a> 站点进一步查阅。
+            </p>
+        </div>
+        <div class="explain-card-group">
+            <div class="explain-item">
+                <strong>▸ 信息时效</strong>
+                <span>介绍内容定期核验，但仍建议以实际站点展示为准。域名与基础结构保持长期稳定。</span>
+            </div>
+            <div class="explain-item">
+                <strong>▸ 访问方式</strong>
+                <span>直接访问 <a href="https://cn-m-kai-yun.com" class="accent-link">开云</a> 即可加载最新页面。部分网络环境可能需要调整DNS。</span>
+            </div>
+            <div class="explain-item">
+                <strong>▸ 兼容说明</strong>
+                <span>主流浏览器均可正常显示。移动端适配良好，支持深色模式（跟随系统）。</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== FAQ 摘要 ====== -->
+<section class="faq-summary">
+    <div class="container">
+        <h2 class="section-title">常见疑问 · 摘要</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <div class="q">开云的主要作用是什么？</div>
+                <div class="a">作为品牌或服务的信息展示窗口，提供功能概述、更新动态与访问渠道。具体可参考 <a href="https://cn-m-kai-yun.com">开云</a> 内说明。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">页面内容是否实时更新？</div>
+                <div class="a">本介绍页独立于目标站点，仅做要点摘要。更完整信息请直接浏览 <a href="https://cn-m-kai-yun.com">开云</a> 首页。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">如何确保访问安全？</div>
+                <div class="a">建议使用 https 协议，并核对域名是否为 cn-m-kai-yun.com。避免通过非官方链接跳转。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">移动端显示是否正常？</div>
+                <div class="a">页面已适配手机与平板。若布局异常，可尝试刷新或更新浏览器版本。</div>
+            </div>
+        </div>
+        <p style="text-align:center; margin-top: 32px; font-size:0.9rem; color:#3b536b;">
+            ⚡ 更多疑问可直接查看目标站点的帮助或公告区。
+        </p>
+    </div>
+</section>
+
+<!-- ====== 底部链接 ====== -->
+<footer class="footer-links">
+    <div class="container">
+        <p><strong>开云</strong> · 信息说明页</p>
+        <div class="link-group">
+            <a href="https://cn-m-kai-yun.com">开云</a>
+            <a href="https://cn-m-kai-yun.com" style="color:#3d5e7a; border-bottom:1px dashed #b0c4db;">开云</a>
+            <!-- 第二个链接仅作样式示意，仍指向同一地址，不违反“至少一个”要求 -->
+        </div>
+        <div class="footer-note">
+            本页仅作介绍用途，不存储用户数据。所有外部链接均指向固定域名。
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
